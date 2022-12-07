@@ -50,6 +50,12 @@ test("popover repsonds to hover", async () => {
   );
   expect(nullPopOver).not.toBeInTheDocument();
   //popover appears on mouseove of checkbox model
+  const termsAndConditions = screen.getByText(/terms and conditions/i);
+  await user.hover(termsAndConditions);
+  const popover = screen.getByText(/no ice cream will actually be delivered/);
+  expect(popover).toBeInTheDocument();
 
-  //popover disappears when we mouse out
+  // popover disappears when we mouse out
+  await user.unhover(termsAndConditions);
+  expect(popover).not.toBeInTheDocument();
 });

@@ -6,9 +6,19 @@ import { useState } from "react";
 
 const SummaryForm = () => {
   const [tcChecked, setTcChecked] = useState(false);
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Body>no ice cream will actually be delivered</Popover.Body>
+    </Popover>
+  );
+
   const checkboxLabel = (
     <span>
-      I agree to <span style={{ color: "blue" }}>Terms and conditions</span>
+      I agree to
+      <OverlayTrigger placement="right" overlay={popover}>
+        <span style={{ color: "blue" }}> Terms and Conditions</span>
+      </OverlayTrigger>
     </span>
   );
   return (
